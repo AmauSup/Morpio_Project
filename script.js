@@ -1,4 +1,5 @@
 const cells = document.querySelectorAll('.cell')
+const overlay = document.querySelector('.overlay')
 
 let board = Array(9).fill("")
 let gameIsPlayable = true 
@@ -20,8 +21,16 @@ function handleClick(event){
 }
 
 function showResult(message){
-    alert(message)
+    overlay.style.display = "flex"
+    overlay.querySelector('h1').textContent = message
     gameIsPlayable = false
+}
+
+function resetGame(){
+    overlay.style.display = "none"
+    board = Array(9).fill("")
+    gameIsPlayable = true
+    cells.forEach(cells => cells.textContent = "")
 }
 
 function CheckForWin(){
@@ -36,7 +45,7 @@ function CheckForWin(){
         [2,4,6],
     ]
 
-    combs.some(comb => {
+   return combs.some(comb => {
         const[a,b,c] = comb
         return board[a] && board[a] == board[b] && board[a] == board[c]
     })
@@ -44,6 +53,7 @@ function CheckForWin(){
 
 function initGame(){
     cells.forEach(cell => cell.addEventListener('click', handleClick ))
+    overlay.querySelector('button').addEventListener('click', resetGame)
 }
 
 initGame()
