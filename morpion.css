@@ -9,7 +9,7 @@ table {
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
-    color: white;
+    color: BLACK;
 
 }
 
@@ -22,14 +22,14 @@ td {
     border-image-slice: 1;
     text-align: center;
     width: 150px;
-    height: 150px;
+    height: 8000000px;
 }
 
 
 #txt_joueur {
 
   text-align: center;
-  color: white;
+  color: RED;
 }
 
 
@@ -82,5 +82,5 @@ form__group {
 }
 
 #j1 {
-    color: white;
+    color: GREEN;
 }
