@@ -1,55 +1,278 @@
-body {
-    background-color: rgb(33, 18, 58);
-    color : whitesmoke;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+:root {
+  --bg-gradient: linear-gradient(145deg, #2a1a72, #4c0d92, #7023b6);
+  --panel: rgba(255, 255, 255, 0.08);
+  --cell: rgba(255, 255, 255, 0.12);
+  --accent: #ff7ac4;
+  --accent-hover: #ff91ce;
+  --text: #fdfcff;
+  --muted: #c5bde0;
+  --danger: #ff4f6b;
+  --shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  --radius: 16px;
+  --blur: 20px;
 }
 
-.board{
-    width: 610px;
-    height: 610px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
+html[data-theme="light"] {
+  --bg-gradient: linear-gradient(145deg, #e9ecff, #ffffff, #f6eaff);
+  --panel: rgba(0, 0, 0, 0.05);
+  --cell: rgba(0, 0, 0, 0.08);
+  --accent: #6b4aff;
+  --accent-hover: #866bff;
+  --text: #1e1633;
+  --muted: #5e5a6d;
+  --danger: #e32b4d;
+  --shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: "Poppins", system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.topbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  margin-bottom: 20px;
+}
+
+.topbar h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin: 0;
+  background: linear-gradient(90deg, #ff91ce, #a379ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.theme-switch {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  background: linear-gradient(90deg, #ff91ce, #a379ff);
+  -webkit-background-clip: text;   
+  -webkit-text-fill-color: transparent; 
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.game-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap; 
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 280px;
+  background: var(--panel);
+  padding: 15px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--blur));
+}
+
+.actions {
+  background: var(--panel);
+  backdrop-filter: blur(var(--blur));
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  box-shadow: var(--shadow);
+}
+
+.players {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--cell);
+  border-radius: var(--radius);
+  font-weight: 500;
+  color: var(--text);
+}
+
+input,
+select {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+button {
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+button.primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+button.primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+button.danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+button.danger:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.status {
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+.scoreboard {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.score {
+  flex: 1;
+  background: var(--cell);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 100px;
+  gap: 16px;
+  width: 360px;
 }
 
 .cell {
-    width: 200px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: sans-serif;
-    font-size: 60px;
-    border: 3px solid;
-    border-radius: 10px;
-    box-sizing: border-box;
-    cursor: pointer;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  background: var(--cell);
+  backdrop-filter: blur(var(--blur));
+  font-size: clamp(3rem, 10vw, 5rem);  
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.08);
 }
 
-.overlay{
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(24, 17, 17 , 0.76);
-    width: 100%;
-    height: 100%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+
+.cell:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(255,255,255,0.2);
 }
 
-.overlay h1{
-    font-size: 80px;
+.cell:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
-.overlay button{
-    padding: 1rem 3rem;
-    border: 0;
-    border-radius: 5px;
-    font-size: 24px;
-    cursor: pointer;
+.cell.win {
+  background: linear-gradient(145deg, var(--accent), #ffb8e3);
+  color: #fff;
+  animation: winpulse 0.8s ease infinite alternate;
+}
+@keyframes winpulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.04); }
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  z-index: 50;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-content {
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.3s ease;
+}
+
+.overlay-content h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: var(--accent);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--muted);
 }

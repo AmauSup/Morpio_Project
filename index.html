@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +8,66 @@
         <title>Morpion</title>
     </head>
 <body>
-    <div class="overlay">
-        <h1> Le joueur X a gagné</h1>
-        <button>Rejouer</button>
+<main class="container">
+  <header class="topbar">
+    <h1>Morpion</h1>
+    <div class="theme-switch">
+      <label class="switch">
+        <input id="themeToggle" type="checkbox" />
+        <span>Thème clair</span>
+      </label>
     </div>
-    <div class="board">
-        <div class="cell" data-index="0"></div>
-        <div class="cell" data-index="1"></div>
-        <div class="cell" data-index="2"></div>
-        <div class="cell" data-index="3"></div>
-        <div class="cell" data-index="4"></div>
-        <div class="cell" data-index="5"></div>
-        <div class="cell" data-index="6"></div>
-        <div class="cell" data-index="7"></div>
-        <div class="cell" data-index="8"></div>
-    </div>
+  </header>
+  <div class="game-wrapper">
+    <section class="board" role="grid" aria-label="Plateau de morpion">
+      <button class="cell" data-index="0"></button>
+      <button class="cell" data-index="1"></button>
+      <button class="cell" data-index="2"></button>
+      <button class="cell" data-index="3"></button>
+      <button class="cell" data-index="4"></button>
+      <button class="cell" data-index="5"></button>
+      <button class="cell" data-index="6"></button>
+      <button class="cell" data-index="7"></button>
+      <button class="cell" data-index="8"></button>
+    </section>
+    <section class="controls">
+      <div class="players">
+        <label>Nom joueur X
+          <input id="playerX" type="text" placeholder="Joueur X" />
+        </label>
+        <label>Nom joueur O
+          <input id="playerO" type="text" placeholder="Joueur O" />
+        </label>
+        <label>Mode
+          <select id="mode">
+            <option value="human">2 joueurs</option>
+            <option value="easy">IA facile</option>
+            <option value="impossible">IA impossible</option>
+          </select>
+        </label>
+        <button id="startBtn" class="primary">Commencer</button>
+      </div>
+      <div class="status">
+        <span id="turnLabel">Entrez les noms et choisissez un mode</span>
+      </div>
+      <div class="scoreboard" aria-live="polite">
+        <div class="score"><span id="nameX">X</span><strong id="scoreX">0</strong></div>
+        <div class="score"><span>Égalités</span><strong id="scoreDraw">0</strong></div>
+        <div class="score"><span id="nameO">O</span><strong id="scoreO">0</strong></div>
+      </div>
+
+      <div class="actions">
+        <button id="resetRound">Rejouer</button>
+        <button id="resetAll" class="danger">Réinitialiser tout</button>
+      </div>
+    </section>
+  </div>
+</main>
+<div class="overlay hidden" id="overlay" role="dialog" aria-modal="true">
+  <div class="overlay-content">
+    <h2 id="overlayText"></h2>
+    <button id="overlayBtn" class="primary">Nouvelle manche</button>
+  </div>
+</div>
 </body>
 </html>
