@@ -47,16 +47,16 @@ function Case(number) {
     }
 }
 
-function fin_jeu() {
+// function fin_jeu() {
 
    
-    const jeu = [] 
-    for (let i = 1; i < 10; i++) {
-        jeu.push(document.getElementById("case" + i).innerText)
-    }
+//     const jeu = [] 
+//     for (let i = 1; i < 10; i++) {
+//         jeu.push(document.getElementById("case" + i).innerText)
+//     }
 
-    console.log(jeu);
-    egalite(jeu);
+//     console.log(jeu);
+//     egalite(jeu);
         
     if 
     (jeu[0] == "X" && jeu[1] == "X" && jeu[2] == "X") 
@@ -170,19 +170,19 @@ function fin_jeu() {
         document.getElementById("txt_joueur").innerHTML = "Victoire de "  + joueur2_nom + " !" 
     }   
 
-    if (statut_jeu === 3) { 
-        for (let i = 1; i < 10; i++) {
-            if (document.getElementById("case" + i).innerText === "X") {
-            document.getElementById("case" + i).style.color = "#11998e";
-            document.getElementById("case" + i).style.borderColor = "#FFFFFF"; 
-            }
-            else if (document.getElementById("case" + i).innerText === "O") {
-                document.getElementById("case" + i).style.color = "#38ef7d";
-                document.getElementById("case" + i).style.borderColor = "#FFFFFF"
-            }
-        }        
-    }
-}
+//     if (statut_jeu === 3) { 
+//         for (let i = 1; i < 10; i++) {
+//             if (document.getElementById("case" + i).innerText === "X") {
+//             document.getElementById("case" + i).style.color = "#11998e";
+//             document.getElementById("case" + i).style.borderColor = "#FFFFFF"; 
+//             }
+//             else if (document.getElementById("case" + i).innerText === "O") {
+//                 document.getElementById("case" + i).style.color = "#38ef7d";
+//                 document.getElementById("case" + i).style.borderColor = "#FFFFFF"
+//             }
+//         }        
+//     }
+// }
 
 
 
@@ -197,17 +197,17 @@ function egalite(jeu) {
 
 
 
-function noms_joueurs() {
+// function noms_joueurs() {
 
  
 
-    joueur1_nom = document.getElementById("j1").value;
-    if (document.getElementById("j1").value === "") { 
-        joueur1_nom = "Joueur 1"
-    }
+//     joueur1_nom = document.getElementById("j1").value;
+//     if (document.getElementById("j1").value === "") { 
+//         joueur1_nom = "Joueur 1"
+//     }
 
-    joueur2_nom = document.getElementById("j2").value;
-    if (document.getElementById("j2").value === "") { 
-        joueur2_nom = "Joueur 2"
-    }
-}
+//     joueur2_nom = document.getElementById("j2").value;
+//     if (document.getElementById("j2").value === "") { 
+//         joueur2_nom = "Joueur 2"
+//     }
+// }
