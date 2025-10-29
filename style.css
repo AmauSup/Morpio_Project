@@ -6,3 +6,25 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.board{
+    width: 610px;
+    height: 610px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.cell {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: 60px;
+    border: 3px solid;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
