@@ -1,0 +1,41 @@
+/* Style très simple et lisible */
+* { box-sizing: border-box; }
+body {
+  font-family: system-ui, Arial, sans-serif;
+  margin: 20px;
+  text-align: center;
+}
+h1 { margin-bottom: 10px; }
+#status { font-weight: 600; margin: 10px 0 20px; }
+
+.board {
+  width: 300px;
+  margin: 0 auto 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.cell {
+  width: 96px;
+  height: 96px;
+  font-size: 48px;
+  font-weight: 700;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.cell:disabled {
+  cursor: default;
+  background: #f3f3f3;
+}
+
+#reset {
+  padding: 8px 14px;
+  border: 1px solid #333;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}

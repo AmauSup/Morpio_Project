@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Morpion très simple</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Morpion</h1>
+
+  <!-- Zone d’infos (qui joue, victoire, nul) -->
+  <p id="status">Tour : X</p>
+
+  <!-- Grille 3x3 -->
+  <div id="board" class="board">
+    <!-- 9 cases (data-index de 0 à 8) -->
+    <button class="cell" data-index="0"></button>
+    <button class="cell" data-index="1"></button>
+    <button class="cell" data-index="2"></button>
+
+    <button class="cell" data-index="3"></button>
+    <button class="cell" data-index="4"></button>
+    <button class="cell" data-index="5"></button>
+
+    <button class="cell" data-index="6"></button>
+    <button class="cell" data-index="7"></button>
+    <button class="cell" data-index="8"></button>
+  </div>
+
+  <!-- Bouton pour recommencer -->
+  <button id="reset">Recommencer</button>
+
+  <script src="app.js"></script>
+</body>
+</html>
