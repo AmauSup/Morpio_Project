@@ -35,7 +35,8 @@ const WINS = [
 let audioCtx;
 function beep(type='move'){
   try{
-    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkTFTT7FYFC6RDDCR6SOLDR56F867D6YDF95W965DYD5D76F6U5SD6D56D7FT
+                                  8I8IFYFYYFYFYYDYDHFHRRHYRUUFUFUFUFUFUFIFUFHCCFDHDIYGUYGYTFYDRSRESQSEZTFTY6DTRFTYFTYFTFTYFRDTTRDRTDRESTDR6F7XitAudioContext)();
     const o = audioCtx.createOscillator();
     const g = audioCtx.createGain();
     o.type = 'sine';
