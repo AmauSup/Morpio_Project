@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Morpion – tailles & logos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>Morpion</h1>
+
+    <section class="controls">
+      <label>
+        Taille du plateau
+        <select id="grid">
+          <option value="4">4 (2×2)</option>
+          <option value="9" selected>9 (3×3)</option>
+          <option value="16">16 (4×4)</option>
+        </select>
+      </label>
+
+      <label>
+        Mode
+        <select id="mode">
+          <option value="easy">Facile</option>
+          <option value="medium" selected>Moyen</option>
+          <option value="impossible">Impossible</option>
+          <option value="friend">Contre un joueur</option>
+        </select>
+      </label>
+
+      <div id="names" class="names">
+        <div>
+          <label>Joueur X
+            <input id="nameX" placeholder="Nom joueur X" maxlength="20" />
+          </label>
+          <label>Logo
+            <select id="logoX">
+              <option>❌</option><option>🐱</option><option>⚽️</option>
+              <option>🎮</option><option>⭐️</option><option>🔥</option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>Joueur O
+            <input id="nameO" placeholder="Nom joueur O" maxlength="20" />
+          </label>
+          <label>Logo
+            <select id="logoO">
+              <option>⭕️</option><option>🐶</option><option>🏀</option>
+              <option>🎲</option><option>💎</option><option>🌊</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="pills">
+        <span id="pillX" class="pill">X</span>
+        <span>&nbsp;vs&nbsp;</span>
+        <span id="pillO" class="pill">O</span>
+      </div>
+
+      <div class="actions">
+        <button id="replay" class="primary">Rejouer</button>
+      </div>
+    </section>
+
+    <p id="status" class="status">Entrez les noms et logos puis jouez.</p>
+
+    <section id="board" class="board" aria-label="Plateau du morpion"></section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
