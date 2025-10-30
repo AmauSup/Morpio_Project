@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Morpion — niveaux & 2 joueurs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <!-- Sélecteur de difficulté (à gauche) -->
+    <div class="difficulty">
+      <select id="mode" title="Difficulté">
+        <option value="easy">Facile</option>
+        <option value="medium" selected>Moyen</option>
+        <option value="impossible">Impossible</option>
+        <option value="friend">Jouer contre un ami</option>
+      </select>
+    </div>
+
+    <!-- Barre centrale X - O -->
+    <div class="scorebar">
+      <span class="pill" id="pillX">X</span>
+      <span class="sep">–</span>
+      <span class="pill" id="pillO">O</span>
+    </div>
+
+    <!-- À droite, rien (place) pour coller au look épuré -->
+    <div class="spacer"></div>
+  </header>
+
+  <!-- Noms quand on choisit "Jouer contre un ami" -->
+  <section class="names" id="names">
+    <input id="nameX" placeholder="Nom du joueur X" />
+    <input id="nameO" placeholder="Nom du joueur O" />
+  </section>
+
+  <!-- Statut -->
+  <p id="status" class="status">C’est à X de jouer.</p>
+
+  <!-- Grille -->
+  <main class="board-wrap">
+    <div class="board" id="board">
+      <button class="cell" data-i="0"></button>
+      <button class="cell" data-i="1"></button>
+      <button class="cell" data-i="2"></button>
+      <button class="cell" data-i="3"></button>
+      <button class="cell" data-i="4"></button>
+      <button class="cell" data-i="5"></button>
+      <button class="cell" data-i="6"></button>
+      <button class="cell" data-i="7"></button>
+      <button class="cell" data-i="8"></button>
+    </div>
+  </main>
+
+  <!-- Rejouer -->
+  <footer class="footer">
+    <button id="replay">Rejouer</button>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
