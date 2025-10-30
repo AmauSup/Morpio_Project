@@ -7,12 +7,9 @@
   <script defer src="morpion.js"></script>
 </head>
 <body>
-
   <h1 id="txt_joueur">Morpion</h1>
 
   <div id="settings">
-
-    <!-- === 🧑‍🤝‍🧑 Zone des joueurs === -->
     <div class="bloc_param" id="zone_joueurs">
       <h2>Joueurs</h2>
       <div class="inputs_joueurs">
@@ -21,24 +18,18 @@
         <div id="joueurs_supp"></div>
       </div>
     </div>
-  
-    <!-- === ⚙️ Paramètres du jeu (sous les joueurs, horizontalement) === -->
+
     <div class="bloc_param" id="options_jeu">
       <h2>Paramètres du jeu</h2>
-  
       <div class="param_ligne_horizontal">
         <div class="param_item">
           <label for="grille">Taille de la grille</label>
-          <input type="number" id="grille" min="3" max="30" value="3" step="1" />
-          
+          <input type="number" id="grille" min="3" max="100" value="3" step="1" />
         </div>
-  
         <div class="param_item">
           <label for="nb_joueurs">Nb joueurs</label>
-          <input type="number" id="nb_joueurs" min="2" max="4" value="2" step="1" oninput="majInputsJoueurs()" />
-          
+          <input type="number" id="nb_joueurs" min="1" max="4" value="2" step="1" oninput="majInputsJoueurs()" />
         </div>
-  
         <div class="param_item">
           <label for="variante">Variante</label>
           <select id="variante">
@@ -48,7 +39,6 @@
             <option value="merelle">Variante Mérelle</option>
           </select>
         </div>
-  
         <div class="param_item">
           <label for="mode">Mode</label>
           <select id="mode">
@@ -56,7 +46,6 @@
             <option value="pve">Joueur vs Ordinateur</option>
           </select>
         </div>
-  
         <div class="param_item">
           <label for="manches">Manches</label>
           <select id="manches">
@@ -66,42 +55,39 @@
         </div>
       </div>
     </div>
-  
-    <!-- === 🎮 Boutons === -->
+
     <div class="bloc_param" id="buttons">
       <h2>Contrôles</h2>
       <button id="bouton_jouer" onclick="init()">Commencer</button>
       <button id="bouton_reset" onclick="rechargerPage()">Nouvelle partie</button>
     </div>
-  
   </div>
-  
 
-  <!-- === Scoreboard === -->
   <div id="scoreboard">
     <span id="scoreX">Joueur 1 : 0</span>
     <span id="scoreO">Joueur 2 : 0</span>
   </div>
 
-  <!-- === Grille du jeu === -->
   <div id="grille_wrapper">
     <div id="grille_jeu"></div>
   </div>
 
   <script>
-    // Ajout dynamique des joueurs 3 et 4
     function majInputsJoueurs() {
-      const nb = parseInt(document.getElementById("nb_joueurs").value);
+      let nb = parseInt(document.getElementById("nb_joueurs").value);
       const zone = document.getElementById("joueurs_supp");
       zone.innerHTML = "";
-    
-      // Supprime les anciens inputs si on réduit le nombre de joueurs
+      const modeSelect = document.getElementById("mode");
+      if (nb === 1) {
+        modeSelect.value = "pve";
+        modeSelect.disabled = true;
+      } else {
+        modeSelect.disabled = false;
+      }
       for (let i = 3; i <= 4; i++) {
         const exist = document.getElementById("j" + i);
         if (exist) exist.remove();
       }
-    
-      // Ajoute dynamiquement les bons inputs
       if (nb >= 3) {
         const j3 = document.createElement("input");
         j3.id = "j3";
@@ -117,9 +103,6 @@
         zone.appendChild(j4);
       }
     }
-
-    
   </script>
-
 </body>
 </html>
